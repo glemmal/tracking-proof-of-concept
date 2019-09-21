@@ -9,20 +9,18 @@ const LoginArea = () => {
   return (
     <div>
       <ZoneProvider parentZone={PageContext} name={'section'} value={'login-area'}>
-          {(dispatch) => (
-            <div>
-              <p>Awesome login component</p>
-              <ZoneConsumer>
-                {(dispatch) => (
-                  <button onClick={() => {
-                    dispatch({
-                      action: 'click'
-                    })
-                  }}>Login</button>
-                )}
-              </ZoneConsumer>
-            </div>
-          )}
+        <div>
+          <p>Awesome login component</p>
+          <ZoneConsumer>
+            {(dispatch) => (
+              <button onClick={() => {
+                dispatch({
+                  action: 'click'
+                })
+              }}>Login</button>
+            )}
+          </ZoneConsumer>
+        </div>
       </ZoneProvider>
     </div>
   )
