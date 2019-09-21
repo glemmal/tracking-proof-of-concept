@@ -1,14 +1,20 @@
 import React from 'react';
 
-import { ZoneProvider } from '../providers/tracking-page-provider';
+import { PageProvider } from '../providers/tracking-page-provider';
 
 import LoginArea from './LoginArea';
+import SignupArea from './SignupArea';
 
 const Login = () => {
   return (
-    <ZoneProvider name={'page'} value={'login'}>
-      <LoginArea />
-    </ZoneProvider>
+    <div>
+      <PageProvider page="login">
+        <LoginArea />
+      </PageProvider>
+      <PageProvider page="signup">
+        <SignupArea />
+      </PageProvider>
+    </div>
   );
 }
 

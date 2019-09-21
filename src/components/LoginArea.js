@@ -1,14 +1,15 @@
 import React from 'react';
 import { createZone } from '../lib';
 
-import { ZoneContext as PageContext } from '../providers/tracking-page-provider';
+import { PageContext } from '../providers/tracking-page-provider';
 
 const LoginArea = () => {
-  const { ZoneProvider, ZoneConsumer } = createZone();
-  
+  const { ZoneProvider, ZoneConsumer, ZoneContext } = createZone();
+  const { ZoneProvider: ChildZoneProvider, ZoneConsumer: ChildZoneConsumer } = createZone();
+
   return (
     <div>
-      <ZoneProvider parentZone={PageContext} name={'section'} value={'login-area'}>
+      <ZoneProvider parentContext={PageContext} name={'section'} value={'login-area'}>
         <div>
           <p>Awesome login component</p>
           <ZoneConsumer>
@@ -17,9 +18,20 @@ const LoginArea = () => {
                 dispatch({
                   action: 'click'
                 })
-              }}>Login</button>
+              }}>Parent button</button>
             )}
           </ZoneConsumer>
+          <ChildZoneProvider parentContext={ZoneContext} name={'atom'} value={'login-child-area'}>
+            <p>This is a child area</p>
+            <ChildZoneConsumer>{(dispatch) => (
+              <button onClick={() => {
+                dispatch({
+                  action: 'click'
+                })
+              }}>Child button</button>
+            )}
+            </ChildZoneConsumer>
+          </ChildZoneProvider>
         </div>
       </ZoneProvider>
     </div>
