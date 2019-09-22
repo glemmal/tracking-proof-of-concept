@@ -1,17 +1,13 @@
 import React from 'react';
-import { createZone } from '../lib';
-
-import { PageContext } from '../providers/tracking-page-provider';
+import { SectionProvider, SectionConsumer } from '../providers/tracking-section-provider';
 
 const SignupArea = () => {
-  const { ZoneProvider, ZoneConsumer } = createZone();
-
   return (
     <div>
-      <ZoneProvider parentContext={PageContext} name={'section'} value={'signup-area'}>
+      <SectionProvider section="signup-area">
         <div>
           <p>Awesome login component</p>
-          <ZoneConsumer>
+          <SectionConsumer>
             {(dispatch) => (
               <button onClick={() => {
                 dispatch({
@@ -19,9 +15,9 @@ const SignupArea = () => {
                 })
               }}>Login</button>
             )}
-          </ZoneConsumer>
+          </SectionConsumer>
         </div>
-      </ZoneProvider>
+      </SectionProvider>
     </div>
   )
 };
