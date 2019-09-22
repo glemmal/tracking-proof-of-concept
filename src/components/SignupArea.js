@@ -6,7 +6,7 @@ const SignupArea = () => {
     <div>
       <SectionProvider section="signup-area">
         <div>
-          <p>Awesome login component</p>
+          <p>Awesome signup component</p>
           <SectionConsumer>
             {(dispatch) => (
               <button onClick={() => {
