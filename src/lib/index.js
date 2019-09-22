@@ -14,10 +14,15 @@ const createRoot = () => {
   return { TrackingRootContext, TrackingRootProvider };
 }
 
-const createZone = () => {
+const createZone = (_parentContext, _name) => {
   const ZoneContext = createContext();
 
-  const ZoneProvider = ({ parentContext, name, value, children}) => {
+  const ZoneProvider = ({ 
+    parentContext = _parentContext, 
+    name = _name, 
+    value, 
+    children
+  }) => {
     const parentDispatch = useContext(parentContext);
     const dispatch = (event) => {
       parentDispatch({

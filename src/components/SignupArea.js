@@ -4,7 +4,7 @@ import { SectionProvider, SectionConsumer } from '../providers/tracking-section-
 const SignupArea = () => {
   return (
     <div>
-      <SectionProvider section="signup-area">
+      <SectionProvider value="signup-area">
         <div>
           <p>Awesome signup component</p>
           <SectionConsumer>

@@ -10,8 +10,8 @@ const {
   ZoneConsumer: SectionConsumer
 } = createZone();
 
-const SectionProvider = ({ children, section }) => (
-  <ZoneProvider parentContext={PageContext} name={NAMESPACE} value={section}>
+const SectionProvider = ({ children, value }) => (
+  <ZoneProvider parentContext={PageContext} name={NAMESPACE} value={value}>
     {children}
   </ZoneProvider>
 );
