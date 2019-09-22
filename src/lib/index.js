@@ -1,19 +1,23 @@
 import React, { createContext, useContext } from 'react';
 
-const TrackingRootContext = createContext();
+const createRoot = () => {
+  const TrackingRootContext = createContext();
 
-const TrackingRootProvider = ({ children, onEvent }) => {
-  return (
-    <TrackingRootContext.Provider value={onEvent}>
-      {children}
-    </TrackingRootContext.Provider>
-  );
-};
+  const TrackingRootProvider = ({ children, onEvent }) => {
+    return (
+      <TrackingRootContext.Provider value={onEvent}>
+        {children}
+      </TrackingRootContext.Provider>
+    );
+  };
+
+  return { TrackingRootContext, TrackingRootProvider };
+}
 
 const createZone = () => {
   const ZoneContext = createContext();
 
-  const ZoneProvider = ({ parentContext = TrackingRootContext, name, value, children}) => {
+  const ZoneProvider = ({ parentContext, name, value, children}) => {
     const parentDispatch = useContext(parentContext);
     const dispatch = (event) => {
       parentDispatch({
@@ -40,4 +44,4 @@ const createZone = () => {
   return { ZoneProvider, ZoneContext, ZoneConsumer };
 }
 
-export { TrackingRootProvider, TrackingRootContext, createZone }
+export { createRoot, createZone }

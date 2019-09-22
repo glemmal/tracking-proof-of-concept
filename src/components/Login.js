@@ -8,7 +8,7 @@ import SignupArea from './SignupArea';
 const Login = () => {
   return (
     <div>
-      <PageProvider page="login">
+      <PageProvider  page="login">
         <LoginArea />
       </PageProvider>
       <PageProvider page="signup">

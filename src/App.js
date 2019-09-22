@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Login from './components/Login';
-import { TrackingRootProvider } from './lib';
+import { TrackingRootProvider } from './providers/tracking-root-provider';
 
 function App() {
   return (
