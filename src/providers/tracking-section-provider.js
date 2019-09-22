@@ -2,8 +2,6 @@ import React from 'react';
 import { createZone } from '../lib';
 import { PageContext } from './tracking-page-provider';
 
-const NAMESPACE = 'section';
-
 const { 
   SectionContext, 
   ZoneProvider, 
@@ -11,7 +9,7 @@ const {
 } = createZone();
 
 const SectionProvider = ({ children, value }) => (
-  <ZoneProvider parentContext={PageContext} name={NAMESPACE} value={value}>
+  <ZoneProvider parentContext={PageContext} name="section" value={value}>
     {children}
   </ZoneProvider>
 );
